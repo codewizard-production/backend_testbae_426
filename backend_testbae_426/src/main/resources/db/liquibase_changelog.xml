@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <property name="schemaName" value="testbae"></property>
+    <property name="author=" value="db-designer"></property>
+    <changeSet id="v1-01-01" author="${author}">
+    
+ <createTable schemaName="${schemaName}" tableName="Incentive">
+	<column name="IncentiveId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Amount" type="DECIMAL" />
+    
+     <column name="CreatedDate" type="TIMESTAMP" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Agent">
+	<column name="AgentID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="ContactNumber" type="VARCHAR(250)" />
+    
+     <column name="Address" type="VARCHAR(250)" />
+    
+      <column name="AadhaarNumber" type="VARCHAR(250)" />
+    
+ 	<column name="AadhaarStatus" type="INTEGER" />
+   
+     <column name="IsApproved" type="BOOLEAN" />
+    
+     <column name="Attribute1" type="VARCHAR(250)" />
+    
+     <column name="Attribute2" type="VARCHAR(250)" />
+    
+     <column name="CreatedDate" type="TIMESTAMP" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="User">
+    <column name="UserName" type="VARCHAR(250)" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Attribute2" type="VARCHAR(250)" />
+    
+     <column name="Attribute3" type="VARCHAR(250)" />
+    
+     <column name="Attribute4" type="VARCHAR(250)" />
+    
+     <column name="Attribute5" type="VARCHAR(250)" />
+    
+     <column name="CreatedDate" type="TIMESTAMP" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="IncentiveSEExec">
+	<column name="IncentiveSEId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Amount" type="DECIMAL" />
+    
+     <column name="Date" type="TIMESTAMP" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Lead">
+	<column name="LeadId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="ContactNumber" type="VARCHAR(250)" />
+    
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Address" type="VARCHAR(250)" />
+    
+ 	<column name="LoanType" type="INTEGER" />
+   
+     <column name="Attribute1" type="VARCHAR(250)" />
+    
+     <column name="Attribute2" type="VARCHAR(250)" />
+    
+     <column name="CreatedDate" type="TIMESTAMP" />
+    
+     <column name="ConversionStatus" type="BOOLEAN" />
+    
+     <column name="SalesAmount" type="DECIMAL" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="HOUser">
+	<column name="HoUserId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Attribute3" type="VARCHAR(250)" />
+    
+     <column name="Attribute1" type="VARCHAR(250)" />
+    
+     <column name="Attribute2" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Document">
+	<column name="DocId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="Type" type="VARCHAR(250)" />
+    
+     <column name="Path" type="VARCHAR(250)" />
+    
+     <column name="Attribute1" type="VARCHAR(250)" />
+    
+ 	<column name="Content" type="BINARY"/>
+	<column name="DocFileType" type="VARCHAR(100)"/>
+	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="SalesExecutive">
+	<column name="ExecId" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Name" type="VARCHAR(250)" />
+    
+     <column name="ContactNumber" type="VARCHAR(250)" />
+    
+     <column name="Address" type="VARCHAR(250)" />
+    
+     <column name="Attribute5" type="VARCHAR(250)" />
+    
+     <column name="Attribute1" type="VARCHAR(250)" />
+    
+     <column name="CreatedDate" type="TIMESTAMP" />
+    
+ 	
+</createTable>
+	
+  <createTable schemaName="${schemaName}" tableName="AgentKYCDocs">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AgentID" type="INTEGER" />
+	<column name="DocId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="AgentLeads">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AgentID" type="INTEGER" />
+	<column name="LeadId" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="AgentLoanTypes">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="AgentID" type="INTEGER" />
+	<column name="LoanTypes" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="SalesExecutiveSELeads">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="ExecId" type="INTEGER" />
+	<column name="LeadId" type="INTEGER" />
+</createTable>
+
+ 
+	<addForeignKeyConstraint baseTableName="AgentKYCDocs" baseTableSchemaName="${schemaName}"  baseColumnNames="AgentID" constraintName="Document_AgentID_fk"
+	                                  referencedTableName="Agent" referencedTableSchemaName="${schemaName}" referencedColumnNames="AgentID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="AgentKYCDocs" baseTableSchemaName="${schemaName}"  baseColumnNames="DocId" constraintName="Document_DocId_fk"
+	                                  referencedTableName="Document" referencedTableSchemaName="${schemaName}" referencedColumnNames="DocId"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="AgentLeads" baseTableSchemaName="${schemaName}"  baseColumnNames="AgentID" constraintName="Lead_AgentID_fk"
+	                                  referencedTableName="Agent" referencedTableSchemaName="${schemaName}" referencedColumnNames="AgentID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="AgentLeads" baseTableSchemaName="${schemaName}"  baseColumnNames="LeadId" constraintName="Lead_LeadId_fk"
+	                                  referencedTableName="Lead" referencedTableSchemaName="${schemaName}" referencedColumnNames="LeadId"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableSchemaName="${schemaName}" baseTableName="AgentLoanTypes" baseColumnNames="AgentID" constraintName="Agent_AgentLoanTypes_fk" referencedTableName="Agent"
+                                 	referencedColumnNames="AgentID" referencedTableSchemaName="${schemaName}"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="SalesExecutiveSELeads" baseTableSchemaName="${schemaName}"  baseColumnNames="ExecId" constraintName="Lead_ExecId_fk"
+	                                  referencedTableName="SalesExecutive" referencedTableSchemaName="${schemaName}" referencedColumnNames="ExecId"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="SalesExecutiveSELeads" baseTableSchemaName="${schemaName}"  baseColumnNames="LeadId" constraintName="Lead_LeadId_fk"
+	                                  referencedTableName="Lead" referencedTableSchemaName="${schemaName}" referencedColumnNames="LeadId"/>
+ 
+	
+  
+	<addColumn tableName="Agent" schemaName="${schemaName}">
+	    <column name="AgentAgentUser" type="VARCHAR(250)"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Agent" baseColumnNames="AgentAgentUser" baseTableSchemaName="${schemaName}" constraintName="Agent_AgentUser_fk" referencedTableName="User"
+	                                 referencedColumnNames="UserName" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Agent" schemaName="${schemaName}">
+	    <column name="AgentPhoto" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Agent" baseColumnNames="AgentPhoto" baseTableSchemaName="${schemaName}" constraintName="Agent_Photo_fk" referencedTableName="Document"
+	                                 referencedColumnNames="DocId" referencedTableSchemaName="${schemaName}"/>
+ 
+   
+	<addColumn tableName="Lead" schemaName="${schemaName}">
+	    <column name="LeadGeneratedBy" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Lead" baseColumnNames="LeadGeneratedBy" baseTableSchemaName="${schemaName}" constraintName="Lead_GeneratedBy_fk" referencedTableName="Agent"
+	                                 referencedColumnNames="AgentID" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Lead" schemaName="${schemaName}">
+	    <column name="LeadAssignedExecutive" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Lead" baseColumnNames="LeadAssignedExecutive" baseTableSchemaName="${schemaName}" constraintName="Lead_AssignedExecutive_fk" referencedTableName="SalesExecutive"
+	                                 referencedColumnNames="ExecId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Lead" schemaName="${schemaName}">
+	    <column name="LeadAgentIncentive" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Lead" baseColumnNames="LeadAgentIncentive" baseTableSchemaName="${schemaName}" constraintName="Lead_AgentIncentive_fk" referencedTableName="Incentive"
+	                                 referencedColumnNames="IncentiveId" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Lead" schemaName="${schemaName}">
+	    <column name="LeadSEExecIncentive" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Lead" baseColumnNames="LeadSEExecIncentive" baseTableSchemaName="${schemaName}" constraintName="Lead_SEExecIncentive_fk" referencedTableName="IncentiveSEExec"
+	                                 referencedColumnNames="IncentiveSEId" referencedTableSchemaName="${schemaName}"/>
+ 
+ 
+	<addColumn tableName="HOUser" schemaName="${schemaName}">
+	    <column name="HOUserHeadOffice" type="VARCHAR(250)"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="HOUser" baseColumnNames="HOUserHeadOffice" baseTableSchemaName="${schemaName}" constraintName="HOUser_HeadOffice_fk" referencedTableName="User"
+	                                 referencedColumnNames="UserName" referencedTableSchemaName="${schemaName}"/>
+ 
+  
+	<addColumn tableName="SalesExecutive" schemaName="${schemaName}">
+	    <column name="SalesExecutiveSEUser" type="VARCHAR(250)"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="SalesExecutive" baseColumnNames="SalesExecutiveSEUser" baseTableSchemaName="${schemaName}" constraintName="SalesExecutive_SEUser_fk" referencedTableName="User"
+	                                 referencedColumnNames="UserName" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="SalesExecutive" schemaName="${schemaName}">
+	    <column name="SalesExecutiveSEPhoto" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="SalesExecutive" baseColumnNames="SalesExecutiveSEPhoto" baseTableSchemaName="${schemaName}" constraintName="SalesExecutive_SEPhoto_fk" referencedTableName="Document"
+	                                 referencedColumnNames="DocId" referencedTableSchemaName="${schemaName}"/>
+ 
+	    </changeSet>
+</databaseChangeLog>
